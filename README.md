@@ -22,10 +22,7 @@ Added `self-hosted-test.yaml` workflow that targets `runs-on: [self-hosted, linu
 **Security concerns with persistent host** — to reduce risk, I cleaned workspaces between runs and limited runner access to this repository only. 
 ## What I would do differently in a production environment
 - **Ephemeral runners:** Use ephemeral cloud runners (auto-created containers/VMs) or an autoscaling fleet so each job runs in a fresh environment (reduces contamination risk). 
-- **Isolated build environment:** Run each job inside a container or VM image that<img width="657" height="413" alt="repo 3" src="https://github.com/user-attachments/assets/2425191f-000c-4f50-a652-0dc054652901" />
-<img width="659" height="406" alt="repo 2" src="https://github.com/user-attachments/assets/36d8d0f8-279c-41d9-97c1-a36264f92254" />
-<img width="650" height="407" alt="repo 1" src="https://github.com/user-attachments/assets/737a3bd6-a4cf-4df8-bd4d-5fab2404476d" />
- is destroyed after use.  
+- **Isolated build environment:** Run each job inside a container or VM image that is destroyed after use.  
 - **Secret management & short-lived credentials:** Use short-lived cloud credentials or secrets managers and avoid mounting long-lived secrets on runner hosts.  
 - **Monitoring & central logging:** Ship runner logs to central monitoring and perform intrusion detection.
 
