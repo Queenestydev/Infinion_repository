@@ -1,0 +1,41 @@
+name: Self-hosted runner test
+ 
+on:
+
+  push:
+
+    branches: [ main ]
+ 
+jobs:
+
+  test-on-self-hosted:
+
+    # either use 'self-hosted' or a more specific label (see below)
+
+    runs-on: self-hosted
+ 
+    steps:
+
+      - name: Show runner info
+
+        run: |
+
+          echo "Hostname: $(hostname)"
+
+          echo "Runner labels: $RUNNER_LABELS"
+
+          uname -a
+ 
+      - name: Checkout code
+
+        uses: actions/checkout@v4
+ 
+      - name: Run a sample script
+
+        run: |
+
+          echo "Hello from self-hosted runner"
+
+          ls -la
+
+ 
